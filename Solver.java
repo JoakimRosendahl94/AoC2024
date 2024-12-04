@@ -10,27 +10,22 @@ public class Solver {
 
     ArrayList<Integer> firstList = new ArrayList<>();
     ArrayList<Integer> secondList = new ArrayList<>();
-
-
     int solution;
-
+    int similarityScore;
 
     public Solver() {
         this.firstList.add(0);
         this.secondList.add(0);
         this.solution = 0;
+        this.similarityScore = 0;
     }
 
-
-    void readInput(String fileName) throws IOException {
+    public void readInput(String fileName) throws IOException {
 
         BufferedReader reader = new BufferedReader(
 
         new FileReader(fileName));
-
         String line;
-
-
 
         while ((line = reader.readLine()) != null) {
             String[] numbers = new String[line.split(" ").length];
@@ -39,22 +34,13 @@ public class Solver {
                 if(!element.equals("")) {
                     numbers[i] = element;
                     i++;
-                }
-                
+                }               
             }
-
             firstList.add(Integer.parseInt(numbers[0]));
             secondList.add(Integer.parseInt(numbers[1]));
-
         }
-
-
-
         reader.close();
-
     }
-
-
 
     public void calculateSolution(ArrayList<Integer> list1, ArrayList<Integer> list2) {
         int temp = 0;
@@ -72,8 +58,6 @@ public class Solver {
 
     }
 
-
-
     public void sortInput(ArrayList<Integer> list) {
         for(int i = 1; i < list.size(); i++) {
             if(list.get(i) < list.get(i - 1)) {
@@ -82,5 +66,21 @@ public class Solver {
             }
         }
         
+    }
+
+    public int similarityScore(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+
+        for(Integer element : list1) {
+            int counter = 0;
+            
+            for(int i = 0; i < list2.size(); i++) {
+                if(element.equals(list2.get(i))) {
+                    counter++;
+                }
+            }
+
+            similarityScore += element*counter;
+        }
+        return similarityScore;
     }
 }

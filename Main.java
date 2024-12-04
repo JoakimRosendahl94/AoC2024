@@ -26,17 +26,15 @@ public class Main {
         s.sortInput(s.secondList);
 
 
-        s.calculateSolution(s.firstList, s.secondList);
-
-        System.err.println(s.solution);
-
+       
         s2.sortInput(s.firstList);
         s2.sortInput(s.secondList);
 
+        s2.similarityScore(s2.firstList, s2.secondList);
+        s.similarityScore(s.firstList, s.secondList);
 
-        s.calculateSolution(s2.firstList, s2.secondList);
-
-        System.err.println(s2.solution);
+        System.err.println(s2.similarityScore);
+        System.out.println(s.similarityScore);
 
     }
     
